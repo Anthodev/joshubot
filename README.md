@@ -3,7 +3,7 @@
 A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony](https://symfony.com) web framework,
 with [FrankenPHP](https://frankenphp.dev) and [Caddy](https://caddyserver.com/) inside!
 
-![CI](https://github.com/anthodev/symfony-docker/workflows/CI/badge.svg)
+![CI](https://github.com/anthodev/joshubot/workflows/CI/badge.svg)
 
 ## Getting Started
 
