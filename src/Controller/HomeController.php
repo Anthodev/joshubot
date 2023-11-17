@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Enum\RequestMethodEnum;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,5 +18,15 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         return $this->render('home/index.html.twig');
+    }
+
+    #[Route('/chat', name: 'send_question', methods: [RequestMethodEnum::POST->value])]
+    public function chat(Request $request): Response
+    {
+        $input = $request->request->get('question');
+
+        return $this->forward('App\Controller\HomeController::index', [
+            'request' => $request,
+        ]);
     }
 }

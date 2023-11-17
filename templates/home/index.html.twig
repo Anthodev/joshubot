@@ -1,3 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Joshu GPT{% endblock %}
+
+{% block body %}
+<section id="answers" class="flex-auto grow mb-1">
+
+</section>
+
+<section id="question" class="mx-auto text-center w-1/2">
+    <form action="{{ path('send_question') }}" method="post">
+        <div class="mb-4 flex flex-wrap items-stretch">
+            <textarea x-data="{
+                resize () {
+                    $el.style.height = '0px';
+                    $el.style.height = $el.scrollHeight + 'px'
+                }
+            }"
+                x-init="resize()"
+                @input="resize()"
+                type="text"
+                placeholder="Enter your prompt"
+                class="flex h-auto min-h-[40px] grow px-3 py-2 mr-1 text-sm border rounded-lg ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
+            ></textarea>
+            <button
+                type="submit"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+                class="flex items-center rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-bold uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                </svg>
+            </button>
+        </div>
+    </form>
+</section>
+
+{% endblock %}
