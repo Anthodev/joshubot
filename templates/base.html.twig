@@ -15,15 +15,11 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        <script
-            type="text/javascript"
-            src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js">
-        </script>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class="dark">
         <header class="absolute inset-x-0 top-0">
             <h1 class="flex w-1/5 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -31,8 +27,8 @@
                 </svg> <span class="ml-3">Joshu GPT</span>
             </h1>
         </header>
-        <div id="content" class="container mx-auto h-screen w-1/2">
-            <div class="flex flex-col h-screen">
+        <div id="content" class="container mx-auto h-screen w-1/2 px-6">
+            <div class="flex flex-col h-full">
                 {% block body %}{% endblock %}
             </div>
         </div>

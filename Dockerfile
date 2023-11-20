@@ -23,6 +23,8 @@ RUN apk add --no-cache \
 		gettext \
 		nodejs \
 		npm \
+		sqlite \
+		sqlite-dev \
 	;
 
 RUN set -eux; \
@@ -31,7 +33,10 @@ RUN set -eux; \
 		intl \
 		opcache \
 		zip \
+		sqlite3 \
 	;
+
+RUN docker-php-ext-install pdo pdo_sqlite
 
 ###> recipes ###
 ###< recipes ###

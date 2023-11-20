@@ -7,6 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    safelist: ['animate-[fade-in-up_1s_ease-in-out]'],
   },
   plugins: [
     require("tw-elements/dist/plugin.cjs"),

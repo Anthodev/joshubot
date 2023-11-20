@@ -24,5 +24,10 @@ header h1 {
 
 textarea {
     background-color: rgb(87, 86, 83);
-    border-color: rgb(67, 133, 190);
+    border: 2px solid rgb(67, 133, 190);
+}
+
+.response {
+    background-color: rgb(64, 62, 60);
+    border: 2px solid lightgray;
 }
