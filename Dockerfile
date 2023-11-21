@@ -80,6 +80,7 @@ RUN set -eux; \
 	;
 
 COPY --link frankenphp/conf.d/app.dev.ini $PHP_INI_DIR/conf.d/
+RUN echo 'max_execution_time = 120' >> /usr/local/etc/php/conf.d/docker-php-maxexectime.ini;
 
 RUN usermod -u ${UID} www-data
 RUN groupmod -g ${GID} www-data

@@ -31,3 +31,15 @@ textarea {
     background-color: rgb(64, 62, 60);
     border: 2px solid lightgray;
 }
+
+#loading-button {
+    display: none;
+}
+
+.is-loading {
+    display: inline-block;
+}
+
+.is-loading svg {
+    display: inline-block;
+}

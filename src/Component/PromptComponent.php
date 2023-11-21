@@ -30,7 +30,7 @@ final class PromptComponent extends AbstractController
     #[LiveProp]
     public ?GptResponseDto $gptResponse = null;
 
-    #[LiveProp]
+    #[LiveProp(writable: true)]
     public bool $isLoading = false;
 
     public function instantiateForm(): FormInterface
@@ -49,7 +49,6 @@ final class PromptComponent extends AbstractController
     ): void {
         $this->submitForm();
         $this->isLoading = true;
-        $this->emit('data_loading');
 
         /** @var GptResponseDto $prompt */
         $prompt = $this->getForm()->getData();
@@ -70,14 +69,7 @@ final class PromptComponent extends AbstractController
 
         $this->emit('response_received');
         $this->isLoading = false;
-        $this->emit('data_loading');
 
         $this->resetForm();
-    }
-
-    #[LiveListener('data_loading')]
-    public function isLoading(): bool
-    {
-        return $this->isLoading;
     }
 }
