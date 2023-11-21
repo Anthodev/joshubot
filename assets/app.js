@@ -10,5 +10,5 @@ import './bootstrap.js';
 import './styles/app.scss';
 import 'tw-elements';
 
-import { Input, initTE } from "tw-elements";
-initTE({ Input }, { allowReinits: true });
+import { Input, Animate, initTE } from "tw-elements";
+initTE({ Input, Animate  }, { allowReinits: true });

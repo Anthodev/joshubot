@@ -23,6 +23,8 @@ RUN apk add --no-cache \
 		gettext \
 		nodejs \
 		npm \
+		sqlite \
+		sqlite-dev \
 	;
 
 RUN set -eux; \
@@ -31,7 +33,10 @@ RUN set -eux; \
 		intl \
 		opcache \
 		zip \
+		sqlite3 \
 	;
+
+RUN docker-php-ext-install pdo pdo_sqlite
 
 ###> recipes ###
 ###< recipes ###
@@ -75,6 +80,7 @@ RUN set -eux; \
 	;
 
 COPY --link frankenphp/conf.d/app.dev.ini $PHP_INI_DIR/conf.d/
+RUN echo 'max_execution_time = 120' >> /usr/local/etc/php/conf.d/docker-php-maxexectime.ini;
 
 RUN usermod -u ${UID} www-data
 RUN groupmod -g ${GID} www-data

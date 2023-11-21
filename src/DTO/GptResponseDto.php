@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\DTO;
 
-readonly class GptResponseDto
+use Symfony\Component\Validator\Constraints as Assert;
+
+class GptResponseDto
 {
-    public function __construct(
-        public string $input,
-        public string $output,
-    ) {
-    }
+    public ?int $id = null;
+    #[Assert\NotBlank]
+    public ?string $input = null;
+    public ?string $output = null;
 }
