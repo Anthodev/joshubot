@@ -30,9 +30,6 @@ final class PromptComponent extends AbstractController
     #[LiveProp]
     public ?GptResponseDto $gptResponse = null;
 
-    #[LiveProp(writable: true)]
-    public bool $isLoading = false;
-
     public function instantiateForm(): FormInterface
     {
         return $this->createForm(PromptType::class, $this->gptResponse);
@@ -48,7 +45,6 @@ final class PromptComponent extends AbstractController
         EntityManagerInterface $entityManager,
     ): void {
         $this->submitForm();
-        $this->isLoading = true;
 
         /** @var GptResponseDto $prompt */
         $prompt = $this->getForm()->getData();
@@ -68,7 +64,6 @@ final class PromptComponent extends AbstractController
         $this->addFlash('error', $prompt->output);
 
         $this->emit('response_received');
-        $this->isLoading = false;
 
         $this->resetForm();
     }
